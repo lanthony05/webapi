@@ -1,0 +1,54 @@
+<form [formGroup]="form">
+    <p-dialog [header]="textoTitle" [(visible)]="visibleClient" [modal]="true" showEffect="fade"
+    [style]="{width: '35vw', height: '50%'}">
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="productoDescripcionId" class="font-semibold w-6rem">Nombre Producto</label>
+        <input pInputText id="productoDescripcionId" name="productoDescripcion" class="flex-auto" autocomplete="off" 
+        [(ngModel)]="producto.NombProd"formControlName="nombre" [ngClass]="{'ng-dirty ng-invalid': getInvalid('nombre')}"/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="precioId" class="font-semibold w-6rem">Precio</label>
+        <p-inputNumber mode="decimal" name="precio"    [minFractionDigits]="2" 
+        id="precioId" class="flex-auto" autocomplete="off" [(ngModel)]="producto.Precio"formControlName="precio" 
+        [ngClass]="{'ng-dirty ng-invalid': getInvalid('precio')}"/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="productoDescripcionId" class="font-semibold w-6rem">Descripciòn</label>
+        <input pInputText id="productoDescripcionId" name="productoDescripcion" class="flex-auto" autocomplete="off" 
+        [(ngModel)]="producto.DescripProd"formControlName="descrip" [ngClass]="{'ng-dirty ng-invalid': getInvalid('descrip')}"/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="productoDescripcionId" class="font-semibold w-6rem">Marca Producto</label>
+        <input pInputText id="productoDescripcionId" name="productoDescripcion" class="flex-auto" autocomplete="off" 
+        [(ngModel)]="producto.Marca"formControlName="marca" [ngClass]="{'ng-dirty ng-invalid': getInvalid('marca')}"/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="productoDescripcionId" class="font-semibold w-6rem">Fecha</label>
+        <input pInputText id="productoDescripcionId" name="productoDescripcion" class="flex-auto" autocomplete="off" 
+        [(ngModel)]="producto.FechaFabricacion"formControlName="fecha" [ngClass]="{'ng-dirty ng-invalid': getInvalid('fecha')}"/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="categoria" class="font-semibold w-6rem">Categoria</label>
+        <p-multiSelect 
+        [options]="categoriaList" 
+        [(ngModel)]="categoriaSelect" 
+        placeholder="Selecciona Categoria"
+        optionLabel="nombCat" 
+        display="chip" 
+        [showClear]="true"
+        formControlName="categoria" [ngClass]="{'ng-dirty ng-invalid': getInvalid('categoria')}"/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+        <label for="categoria" class="font-semibold w-6rem">Fecha</label>
+        <input type="date" pInputText formControlName="fecha" [ngClass]="{'ng-dirty ng-invalid': getInvalid('fecha')}" />
+
+    </div>
+    
+    <p-divider type="solid" />
+    <div class="flex justify-content-end flex-column sm:flex-row">
+        <button pButton label="Guardar" class="p-button m-2" (click)="registrarProducto()"></button>
+        <button pButton label="Cancelar" class="p-button-outlined m-2" (click)="visibleClient=false"></button>
+    </div>
+</p-dialog>
+</form>
+<p-toast/>

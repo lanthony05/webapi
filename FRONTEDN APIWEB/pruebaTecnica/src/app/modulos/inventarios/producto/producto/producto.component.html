@@ -1,0 +1,97 @@
+
+<div class="grid">
+	<div class="col-12">
+		<div class="text-900 font-bold text-6xl mb-4 text-left">Producto</div>
+		<div class="card">
+			<h5>Lista de productos</h5>
+			<p-table [value]="productoList" >
+				<ng-template pTemplate="caption">
+					<div class="flex justify-content-between flex-column sm:flex-row">
+						<button pButton label="Nuevo producto" class="p-button mb-2" icon="pi pi-plus" (click)="dialogNuevoCliente()"></button>
+
+					</div>
+				</ng-template>
+				<ng-template pTemplate="header">
+					<tr>
+						<th style="min-width: 2rem">
+							<div class="flex justify-content-between align-items-center">
+								N
+							</div>
+						</th>
+						<th style="min-width: 16rem">
+							<div class="flex justify-content-between align-items-center">
+								Producto
+							</div>
+						</th>
+						<th style="min-width: 12rem">
+							<div class="flex justify-content-between align-items-center">
+								Descripciòn		
+							</div>
+						</th>
+						<th style="min-width: 12rem">
+							<div class="flex justify-content-between align-items-center">
+								Precio		
+							</div>
+						</th>
+						<th style="min-width: 12rem">
+							<div class="flex justify-content-between align-items-center">
+								Marca		
+							</div>
+						</th>
+						<th style="min-width: 12rem">
+							<div class="flex justify-content-between align-items-center">
+								Fecha		
+							</div>
+						</th>
+						<th style="min-width: 10rem" colspan="2">
+							<div class="flex justify-content-between align-items-center">
+								Acciones
+							</div>
+						</th>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="body" let-rowIndex="rowIndex"  let-producto>
+					<tr>
+						<td>
+							{{ rowIndex + 1 }}
+						</td>
+						<td>
+							{{ producto.nombProd }}
+							
+						</td>
+						<td>
+							{{ producto.descripProd }}
+							
+						</td>
+						<td>
+							{{ producto.precio | currency}}
+						</td>
+						<td>
+							{{ producto.marca }}
+						</td>
+						<td>
+							{{ producto.fechaFabricacion }}
+						</td>
+						<td>
+							<p-button class="m-2" type="button"(click)="actualizarProducto(producto)" icon="pi pi-pencil" ></p-button>
+							<p-button class="m-2" severity="danger" (click)="eliminarProducto(producto)" type="button" icon="pi pi-trash"></p-button>
+
+						</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="emptymessage">
+					<tr>
+						<td colspan="8">No hay productos registrados.</td>
+					</tr>
+				</ng-template>
+				<ng-template pTemplate="loadingbody">
+					<tr>
+						<td colspan="8">Cargando productos...</td>
+					</tr>
+				</ng-template>
+    		</p-table>
+		</div>
+	</div>
+</div>
+<app-dialogcliente #dialogoProducto  (productoEmitter)="registrarProduct($event)"></app-dialogcliente>
+<p-toast/>
