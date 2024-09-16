@@ -1,0 +1,6 @@
+@sgiTechStore_HostAddress = http://localhost:5094
+
+GET {{sgiTechStore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
